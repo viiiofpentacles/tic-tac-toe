@@ -25,4 +25,14 @@
     border: 2px solid rgb(151, 151, 151);
     height: 5rem;
     width: 5rem;
+    font-size: 3rem;
+    font-weight: 600;
+    color: rgb(144, 144, 253);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#gameboard-container>div:hover {
+    cursor: pointer;
 }
