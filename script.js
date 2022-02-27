@@ -98,11 +98,13 @@ const displayController = () => {
 
     const restartButton = document.getElementById("restart-button");
     restartButton.addEventListener("click", () => {
+        gameboard.gameBoardSquares.length = 0;
         while (gameBoardContainer.firstChild) {
             gameBoardContainer.removeChild(gameBoardContainer.firstChild);
         }
         gameboard.createGameBoardSquares()
         gameBoardContainer.style.pointerEvents = "";
+        
     })
 }
 
