@@ -16,7 +16,6 @@
     margin: 1rem;
 
     display: grid;
-    grid-auto-flow: column;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
 }

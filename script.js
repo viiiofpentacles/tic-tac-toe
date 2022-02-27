@@ -37,9 +37,43 @@ const gameboard = (() => {
 
 })()
 
-
-
-// Winning conditions used to check for winner 
 const gamePlay = () => {
 
+    const winningConditions = [
+        "0,1,2",
+        "3,4,5",
+        "6,7,8",
+        "0,3,6",
+        "1,4,7",
+        "2,5,8",
+        "0,4,8",
+        "2,4,6"
+    ]
+
+    //return indexof x and o in array as string and compare to winningConditions
+    let indexOfMarksX = [];
+        (gameboard.gameBoardSquares).forEach((square, index) => {
+        if(square === "x") {
+            indexOfMarksX.push(index);
+        return convertedArrayX = indexOfMarksX.toString();
+        }
+    })
+
+    let indexOfMarksO = [];
+        (gameboard.gameBoardSquares).forEach((square, index) => {
+        if(square === "o") {
+            indexOfMarksO.push(index);
+        return convertedArrayO = indexOfMarksO.toString();
+        }
+    })
+    
+    if(winningConditions.includes(convertedArrayX)===true){
+        console.log("Winner is X")
+    }else if(winningConditions.includes(convertedArrayO)===true){
+        console.log("Winner is O")
+    }else{
+        console.log("It's a draw")
+    }
 }
+
+
