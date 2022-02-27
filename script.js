@@ -43,6 +43,7 @@ const gameboard = (() => {
 
 const gamePlay = () => {
 
+    //game currently does not cover all cases where there are 4 or more marks
     const winningConditions = [
         "0,1,2",
         "3,4,5",
@@ -51,10 +52,14 @@ const gamePlay = () => {
         "1,4,7",
         "2,5,8",
         "0,4,8",
-        "2,4,6"
+        "2,4,6",
+        "0,2,4,6",
+        "0,4,6,8",
+        "2,6,7,8",
+        "1,4,6,7",
+        "3,4,5,7"
     ]
 
-    //return indexof x and o in array as string and compare to winningConditions
     let indexOfMarksX = [];
         (gameboard.gameBoardSquares).forEach((square, index) => {
         if(square === "x") {
@@ -75,7 +80,7 @@ const gamePlay = () => {
         return winner = "playerX";
     }else if(indexOfMarksO.length>=3 && winningConditions.includes(convertedArrayO)===true){
         return winner = "playerO";
-    }else if(indexOfMarksX.length >= 4 && indexOfMarksO.length >= 3) {
+    }else if(indexOfMarksX.length >= 4 && indexOfMarksO.length >= 4) {
         return winner = "draw";
     }
     
@@ -104,9 +109,11 @@ const displayController = () => {
         }
         gameboard.createGameBoardSquares()
         gameBoardContainer.style.pointerEvents = "";
-        
+        winnerDisplay.textContent = ""
     })
 }
+
+
 
 
 
