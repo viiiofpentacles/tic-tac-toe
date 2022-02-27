@@ -18,12 +18,16 @@ const gameboard = (() => {
                 square.textContent = "☓";
                 squareIndex = gameBoardSquares.indexOf(square);
                 gameBoardSquares[squareIndex] = "x";
-                square.removeEventListener("click", addMark, false)
+                square.removeEventListener("click", addMark, false);
+                gamePlay();
+                displayController();
             }else{
                 square.textContent = "○";
                 squareIndex = gameBoardSquares.indexOf(square);
                 gameBoardSquares[squareIndex] = "o";
-                square.removeEventListener("click", addMark, false)
+                square.removeEventListener("click", addMark, false);
+                gamePlay();
+                displayController();
             }
         }
 
@@ -35,7 +39,7 @@ const gameboard = (() => {
 
     return {gameBoardSquares};
 
-})()
+})();
 
 const gamePlay = () => {
 
@@ -66,14 +70,25 @@ const gamePlay = () => {
         return convertedArrayO = indexOfMarksO.toString();
         }
     })
-    
-    if(winningConditions.includes(convertedArrayX)===true){
-        console.log("Winner is X")
-    }else if(winningConditions.includes(convertedArrayO)===true){
-        console.log("Winner is O")
-    }else{
-        console.log("It's a draw")
+
+    if(indexOfMarksX.length>=3 && winningConditions.includes(convertedArrayX)===true){
+        return winner = "playerX";
+    }else if(indexOfMarksO.length>=3 && winningConditions.includes(convertedArrayO)===true){
+        return winner = "playerO";
+    }else if(indexOfMarksX.length >= 4 && indexOfMarksO.length >= 3) {
+        return winner = "draw";
     }
+    
 }
 
+const displayController = () => {
+    const winnerDisplay = document.getElementById("winner-display");
 
+    if(gamePlay()==="playerX") {
+        winnerDisplay.textContent = "Player X is the winner!"
+    } else if(gamePlay() === "playerO") {
+        winnerDisplay.textContent = "Player O is the winner!"
+    } else if(gamePlay() === "draw") {
+        winnerDisplay.textContent = "It's a draw!"
+    }
+}
