@@ -102,6 +102,7 @@ const displayController = () => {
             gameBoardContainer.removeChild(gameBoardContainer.firstChild);
         }
         gameboard.createGameBoardSquares()
+        gameBoardContainer.style.pointerEvents = "";
     })
 }
 
