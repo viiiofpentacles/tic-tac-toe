@@ -3,7 +3,7 @@ const gameboard = (() => {
 
     const gameBoardSquares = [];
 
-    const createGameBoardSquares = (() => {
+    const createGameBoardSquares = () => {
         for (let i = 0; i < 9; i++) {
         const square = document.createElement("div");
         
@@ -35,9 +35,9 @@ const gameboard = (() => {
         gameBoardSquares.push(square);
         }
                   
-    })();
+    }
 
-    return {gameBoardSquares};
+    return {gameBoardSquares, createGameBoardSquares};
 
 })();
 
@@ -83,12 +83,27 @@ const gamePlay = () => {
 
 const displayController = () => {
     const winnerDisplay = document.getElementById("winner-display");
+    const gameBoardContainer = document.getElementById("gameboard-container");
 
     if(gamePlay()==="playerX") {
         winnerDisplay.textContent = "Player X is the winner!"
+        gameBoardContainer.style.pointerEvents = "none"; 
     } else if(gamePlay() === "playerO") {
         winnerDisplay.textContent = "Player O is the winner!"
+        gameBoardContainer.style.pointerEvents = "none"; 
     } else if(gamePlay() === "draw") {
         winnerDisplay.textContent = "It's a draw!"
+        gameBoardContainer.style.pointerEvents = "none"; 
     }
+
+    const restartButton = document.getElementById("restart-button");
+    restartButton.addEventListener("click", () => {
+        while (gameBoardContainer.firstChild) {
+            gameBoardContainer.removeChild(gameBoardContainer.firstChild);
+        }
+    })
 }
+
+
+
+gameboard.createGameBoardSquares();
