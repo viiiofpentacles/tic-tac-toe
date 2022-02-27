@@ -101,6 +101,7 @@ const displayController = () => {
         while (gameBoardContainer.firstChild) {
             gameBoardContainer.removeChild(gameBoardContainer.firstChild);
         }
+        gameboard.createGameBoardSquares()
     })
 }
 
